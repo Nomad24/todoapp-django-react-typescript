@@ -2,9 +2,9 @@ import React, { useState, useRef, useEffect, useCallback } from "react";
 import "../App.css";
 
 const HomePage: React.FC = () => {
-  const [todo, setTodo]: any = useState([]);
-  const [id, setId]: any = useState(null);
-  const [edit, setEdit]: any = useState(false);
+  const [todo, setTodo] = useState([]);
+  const [id, setId] = useState(null);
+  const [edit, setEdit] = useState(false);
   
   const ref = useRef<HTMLInputElement>(null);
   
@@ -50,10 +50,10 @@ const HomePage: React.FC = () => {
 
       const csrftoken = getCookie("csrftoken");
 
-      let url: any = "http://127.0.0.1:8000/api/task-create/";
+      let url: any = "/api/task-create/";
 
       if (edit == true) {
-        url = `http://127.0.0.1:8000/api/task-update/${id}/`;
+        url = `/api/task-update/${id}/`;
         setEdit(false);
       }
 
@@ -88,7 +88,7 @@ const HomePage: React.FC = () => {
 
     const csrftoken = getCookie("csrftoken");
 
-    const response = await fetch( `http://127.0.0.1:8000/api/task-delete/${name.id}/`,{
+    const response = await fetch( `/api/task-delete/${name.id}/`,{
       method: "DELETE",
       headers: {
         'Content-type':'application/json',
